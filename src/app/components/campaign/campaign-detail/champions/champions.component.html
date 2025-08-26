@@ -1,5 +1,6 @@
-<section class="pt-96 pb-96 champions">
+<section class=" pb-96 champions" [ngClass]="{'pt-96':campaign()?.donors?.length}">
   <div class="container">
+    @if(campaign()?.donors?.length) {
     <h3 class="semi-bold">
       Champions of the Cause
     </h3>
@@ -19,6 +20,7 @@
       </div>
       }
     </div>
+    }
     <div class="donate">
       <h5 class="semi-bold">
         Donate Now

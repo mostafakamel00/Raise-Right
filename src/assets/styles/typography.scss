@@ -1,39 +1,49 @@
 .semi-bold {
   font-size: 36px;
-  font-weight: 600;
+  @extend %f-bold-600;
 }
 
 .semi-bold-xl {
   font-size: 60px;
-  font-weight: 600;
+  @extend %f-bold-600;
 }
 
 .semi-bold-lg {
   font-size: 18px;
-  font-weight: 600;
+  @extend %f-bold-600;
 }
 
 .semi-bold-md {
   font-size: 16px;
-  font-weight: 600;
+  @extend %f-bold-600;
 }
 
 .semi-bold-sm {
   font-size: 14px;
-  font-weight: 600;
+  @extend %f-bold-600;
 }
 
 .regular-xl {
   font-size: 20px;
-  font-weight: 400;
+  @extend %f-bold-400;
 }
 
 .regular-sm {
   font-size: 14px;
-  font-weight: 400;
+  @extend %f-bold-400;
 }
 
 .label {
   font-size: 16px;
+  @extend %f-bold-400;
+}
+
+
+
+%f-bold-600 {
+  font-weight: 600;
+}
+
+%f-bold-400 {
   font-weight: 400;
 }
