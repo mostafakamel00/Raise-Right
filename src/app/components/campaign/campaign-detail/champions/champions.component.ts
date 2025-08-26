@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InputComponent } from "../../../../core/components/input/input.component";
 import { PrimaryButtonComponent } from "../../../../core/components/primary-button/primary-button.component";
+import { CampaignDetail, defaultCampaignDetail } from '../../../../core/model/campaign';
 
 @Component({
   selector: 'app-champions',
@@ -10,5 +11,6 @@ import { PrimaryButtonComponent } from "../../../../core/components/primary-butt
   styleUrl: './champions.component.scss'
 })
 export class ChampionsComponent {
+  @Input() item: CampaignDetail = defaultCampaignDetail
 
 }

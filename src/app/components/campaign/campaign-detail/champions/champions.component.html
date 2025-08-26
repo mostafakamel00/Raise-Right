@@ -4,36 +4,20 @@
       Champions of the Cause
     </h3>
     <div class="cards-list mt-5 pt-4">
+      @for (donor of item.donors; track $index) {
       <div class="card">
         <div class="head d-flex-between">
-          <p class="semi-bold-lg">fatima</p>
+          <p class="semi-bold-lg">{{donor.name}}</p>
+          @if($index === item.donors.length - 1){
           <span class="badge">New</span>
+          }
         </div>
         <p class="semi-bold-md currency mt-3">
           <span>$</span>
-          1,200
+          {{donor.amount}}
         </p>
       </div>
-      <div class="card">
-        <div class="head d-flex-between">
-          <p class="semi-bold-lg">fatima</p>
-          <span class="badge">New</span>
-        </div>
-        <p class="semi-bold-md currency mt-3">
-          <span>$</span>
-          1,200
-        </p>
-      </div>
-      <div class="card">
-        <div class="head d-flex-between">
-          <p class="semi-bold-lg">fatima</p>
-          <span class="badge">New</span>
-        </div>
-        <p class="semi-bold-md currency mt-3">
-          <span>$</span>
-          1,200
-        </p>
-      </div>
+      }
     </div>
     <div class="donate">
       <h5 class="semi-bold">

@@ -1,9 +1,9 @@
 <section>
   <div class="container">
-    <app-campaign-header [label]="'Masjid Area Extension'" [linkMap]="linkMap"></app-campaign-header>
+    <app-campaign-header [label]="campaign()?.name || ''" [linkMap]="linkMap"></app-campaign-header>
   </div>
-  <app-campaign-stats></app-campaign-stats>
-  <app-champions></app-champions>
+  <app-campaign-stats [item]="campaign()!"></app-campaign-stats>
+  <app-champions [item]="campaign()!"></app-champions>
   <app-partner></app-partner>
   <app-notified-campaigns></app-notified-campaigns>
 </section>

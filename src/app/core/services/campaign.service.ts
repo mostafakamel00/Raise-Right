@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Campaign } from '../model/campaign';
+import { Campaign, CampaignDetail } from '../model/campaign';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -14,6 +14,7 @@ export class CampaignService {
   loading = signal<boolean>(false);
   error = signal<string | null>(null);
 
+  campaignDetail = signal<CampaignDetail | null>(null);
   constructor(private http: HttpClient) { }
 
   loadCampaigns() {
@@ -22,7 +23,6 @@ export class CampaignService {
 
     this.http.get<Campaign[]>(this.apiUrl).subscribe({
       next: (data) => {
-        console.log('🚀🏎️data', data);
         this.campaigns.set(data);
         this.loading.set(false);
       },
@@ -31,6 +31,13 @@ export class CampaignService {
         this.error.set('حدث خطأ أثناء تحميل الحملات');
         this.loading.set(false);
       }
+    });
+  }
+
+  getCampaignById(id: string) {
+    this.http.get<CampaignDetail>(`${this.apiUrl}/${id}`).subscribe({
+      next: (data) => this.campaignDetail.set(data),
+      error: (err) => console.error('Error loading campaign detail:', err)
     });
   }
 }

@@ -5,6 +5,8 @@ import { BreadCrumb } from '../../../core/model/breadcrumb';
 import { CampaignStatsComponent } from "./campaign-stats/campaign-stats.component";
 import { ChampionsComponent } from "./champions/champions.component";
 import { PartnerComponent } from "./partner/partner.component";
+import { ActivatedRoute } from '@angular/router';
+import { CampaignService } from '../../../core/services/campaign.service';
 
 @Component({
   selector: 'app-campaign-detail',
@@ -24,4 +26,18 @@ export class CampaignDetailComponent {
       route: ''
     },
   ]
+
+  campaign = this.campaignService.campaignDetail;
+
+  constructor(
+    private route: ActivatedRoute,
+    private campaignService: CampaignService
+  ) { }
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.campaignService.getCampaignById(id);
+    }
+  }
 }

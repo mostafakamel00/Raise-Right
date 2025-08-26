@@ -15,3 +15,14 @@ export interface CampaignDetail extends Campaign {
   description: string;
   donors: Donor[];
 }
+
+
+export const defaultCampaignDetail = {
+  id: 0,
+  name: '',
+  goal: 0,
+  currentAmount: 0,
+  imageUrl: '',
+  description: '',
+  donors: [{ name: '', amount: 0 }]
+};
