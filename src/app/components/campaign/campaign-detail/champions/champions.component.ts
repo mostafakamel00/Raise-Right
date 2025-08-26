@@ -3,6 +3,7 @@ import { InputComponent } from "../../../../core/components/input/input.componen
 import { PrimaryButtonComponent } from "../../../../core/components/primary-button/primary-button.component";
 import { CampaignService } from '../../../../core/services/campaign.service';
 import { CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-champions',
@@ -13,6 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ChampionsComponent {
   campaignService = inject(CampaignService)
+  toastr = inject(ToastrService)
   campaign = this.campaignService.campaignDetail;
   donor = {
     name: '',
@@ -21,7 +23,7 @@ export class ChampionsComponent {
 
   onDonate() {
     if (!this.donor.name.trim() || this.donor.amount <= 0) {
-      console.warn('⚠️ Invalid donation data');
+      this.toastr.warning('Invalid donation data')
       return;
     }
 

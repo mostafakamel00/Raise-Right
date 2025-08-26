@@ -3,36 +3,27 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Campaign, CampaignDetail, Donor } from '../model/campaign';
 import { SocketService } from './socket.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CampaignService {
   private apiUrl = `${environment.apiBaseUrl}/campaigns`;
-
   campaigns = signal<Campaign[]>([]);
-  loading = signal<boolean>(false);
-  error = signal<string | null>(null);
-
   campaignDetail = signal<CampaignDetail | null>(null);
 
-  constructor(private http: HttpClient, private socketService: SocketService) {
+  constructor(private http: HttpClient, private socketService: SocketService, private toastr: ToastrService) {
     this.listenToSocket()
   }
 
   loadCampaigns() {
-    this.loading.set(true);
-    this.error.set(null);
-
     this.http.get<Campaign[]>(this.apiUrl).subscribe({
       next: (data) => {
         this.campaigns.set(data);
-        this.loading.set(false);
       },
       error: (err) => {
-        console.error('Error loading campaigns:', err);
-        this.error.set('حدث خطأ أثناء تحميل الحملات');
-        this.loading.set(false);
+        this.toastr.error('An error occurred while loading campaigns')
       }
     });
   }
@@ -40,7 +31,7 @@ export class CampaignService {
   getCampaignById(id: string) {
     this.http.get<CampaignDetail>(`${this.apiUrl}/${id}`).subscribe({
       next: (data) => this.campaignDetail.set(data),
-      error: (err) => console.error('Error loading campaign detail:', err)
+      error: (err) => this.toastr.error('Error loading campaign detail')
     });
   }
 
@@ -53,10 +44,8 @@ export class CampaignService {
     });
   }
 
-
   private listenToSocket() {
     this.socketService.connect(environment.wsUrl);
-
     this.socketService.onMessage((msg) => {
       if (msg.type === 'donation') {
         let donor: { name: string; amount: number };

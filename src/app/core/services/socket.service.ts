@@ -1,24 +1,16 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SocketService {
   private socket!: WebSocket;
-
+  toastr = inject(ToastrService)
   connect(url: string) {
     this.socket = new WebSocket(url);
-
-    this.socket.onopen = () => {
-      console.log('✅ WebSocket connected:', url);
-    };
-
-    this.socket.onclose = () => {
-      console.log('❌ WebSocket disconnected');
-    };
-
     this.socket.onerror = (err) => {
-      console.error('⚠️ WebSocket error:', err);
+      this.toastr.error('WebSocket connection error')
     };
   }
 
@@ -28,7 +20,7 @@ export class SocketService {
         const msg = JSON.parse(event.data);
         callback(msg);
       } catch (e) {
-        console.error('Invalid WS message:', event.data);
+        this.toastr.error('Invalid WebSocket message received')
       }
     };
   }

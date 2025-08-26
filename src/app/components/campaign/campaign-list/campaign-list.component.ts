@@ -1,4 +1,4 @@
-import { Component, computed } from '@angular/core';
+import { Component } from '@angular/core';
 import { CampaignHeaderComponent } from "../campaign-header/campaign-header.component";
 import { CampaignCardComponent } from "../campaign-card/campaign-card.component";
 import { NotifiedCampaignsComponent } from "../../../core/components/notified-campaigns/notified-campaigns.component";
@@ -21,10 +21,6 @@ export class CampaignListComponent {
   ]
 
   campaigns = this.campaignService.campaigns;
-  loading = this.campaignService.loading;
-  error = this.campaignService.error;
-
-  totalCampaigns = computed(() => this.campaigns().length);
 
   constructor(private campaignService: CampaignService) { }
 

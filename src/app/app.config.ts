@@ -1,4 +1,4 @@
-import { ApplicationConfig } from '@angular/core';
+import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { provideApollo } from 'apollo-angular';
@@ -6,6 +6,7 @@ import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache, ApolloClientOptions } from '@apollo/client/core';
 import { routes } from './app.routes';
 import { environment } from './environments/environment';
+import { ToastrModule } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +27,15 @@ export const appConfig: ApplicationConfig = {
         };
       },
       deps: [HttpLink]
-    }
+    },
+    importProvidersFrom(
+      ToastrModule.forRoot({
+        timeOut: 3000,
+        positionClass: 'toast-top-right',
+        preventDuplicates: true,
+        closeButton: true,
+        progressBar: true
+      })
+    )
   ]
 };
