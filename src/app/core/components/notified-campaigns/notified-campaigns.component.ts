@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { InputComponent } from "../input/input.component";
 import { PrimaryButtonComponent } from "../primary-button/primary-button.component";
+import { NotifyService } from '../../services/notify.service';
 
 @Component({
   selector: 'app-notified-campaigns',
@@ -10,5 +11,10 @@ import { PrimaryButtonComponent } from "../primary-button/primary-button.compone
   styleUrl: './notified-campaigns.component.scss'
 })
 export class NotifiedCampaignsComponent {
-
+  notifyService = inject(NotifyService)
+  email: string = ''
+  onSubscribe() {
+    this.notifyService.onSubscribe(this.email)
+    this.email = ''
+  }
 }

@@ -9,11 +9,11 @@
   </div>
   <form>
     <div>
-      <app-input></app-input>
+      <app-input [name]="'email'" [(value)]="email" [type]="'email'" [placeholder]="'Enter your email'"></app-input>
       <p class="pt-2 regular-sm">
         We care about your data in our <a>privacy policy</a>
       </p>
     </div>
-    <app-primary-button [label]="'Subscribe'"></app-primary-button>
+    <app-primary-button [label]="'Subscribe'" (handleClick)="onSubscribe()"></app-primary-button>
   </form>
 </section>

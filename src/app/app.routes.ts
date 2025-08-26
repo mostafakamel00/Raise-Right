@@ -16,7 +16,6 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/campaign/campaign-detail/campaign-detail.component').then(m => m.CampaignDetailComponent),
   },
-
   {
     path: '**',
     redirectTo: 'campaigns',

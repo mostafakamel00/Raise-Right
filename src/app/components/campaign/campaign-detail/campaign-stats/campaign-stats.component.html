@@ -15,7 +15,7 @@
           <app-progress-bar [value]="campaign()?.currentAmount || 0" [max]="campaign()?.goal || 100"></app-progress-bar>
         </div>
         <div class="stats mt-5">
-          @for (donor of campaign()?.donors; track $index) {
+          @for (donor of campaign()?.donors?.slice(-4); track $index) {
           <div class="box">
             <span class="semi-bold-xl">${{donor.amount}}</span>
             <h4 class="pt-2">{{donor.name}}</h4>
