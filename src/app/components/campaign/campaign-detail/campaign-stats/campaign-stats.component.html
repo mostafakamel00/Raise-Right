@@ -1,21 +1,21 @@
 <section class="compaign-stats pt-96 pb-96">
   <div class="container">
     <div class="parent">
-      <img [src]="item.imageUrl | fallbackImage" [alt]="item.name" class="dummy">
+      <img [src]="campaign()?.imageUrl | fallbackImage" [alt]="campaign()?.name" class="dummy">
       <div class="content">
         <div class="head">
           <p class="semi-bold-md pb-2">
             We’ve helped hundreds of users raise funds
           </p>
           <h2>
-            {{item.description}}
+            {{campaign()?.description}}
           </h2>
         </div>
         <div class="progress mt-5 pt-4 mb-4">
-          <app-progress-bar [value]="item.currentAmount" [max]="item.goal"></app-progress-bar>
+          <app-progress-bar [value]="campaign()?.currentAmount || 0" [max]="campaign()?.goal || 100"></app-progress-bar>
         </div>
         <div class="stats mt-5">
-          @for (donor of item.donors; track $index) {
+          @for (donor of campaign()?.donors; track $index) {
           <div class="box">
             <span class="semi-bold-xl">${{donor.amount}}</span>
             <h4 class="pt-2">{{donor.name}}</h4>

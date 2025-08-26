@@ -4,11 +4,11 @@
       Champions of the Cause
     </h3>
     <div class="cards-list mt-5 pt-4">
-      @for (donor of item.donors; track $index) {
+      @for (donor of campaign()?.donors; track $index) {
       <div class="card">
         <div class="head d-flex-between">
           <p class="semi-bold-lg">{{donor.name}}</p>
-          @if($index === item.donors.length - 1){
+          @if($index === (campaign()?.donors?.length || 0) - 1){
           <span class="badge">New</span>
           }
         </div>
@@ -25,9 +25,10 @@
       </h5>
       <form action="" class="mt-5">
         <div class="form">
-          <app-input class="input-number" [type]="'number'" [placeholder]="'$10.00'" [name]="''"></app-input>
-          <app-input class="input-name"></app-input>
-          <app-primary-button [label]="'Donate'"></app-primary-button>
+          <app-input class="input-number" [type]="'number'" [placeholder]="'$10.00'" [name]="'amount'"
+            [(value)]="donor.amount"></app-input>
+          <app-input class="input-name" [name]="'name'" [(value)]="donor.name"></app-input>
+          <app-primary-button [label]="'Donate'" (handleClick)="onDonate()"></app-primary-button>
         </div>
       </form>
     </div>

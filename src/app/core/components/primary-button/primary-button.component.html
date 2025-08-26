@@ -1,3 +1,4 @@
-<button class="primary-btn" [ngClass]="{'primary-btn': isPrimary, 'secondary-btn': !isPrimary}">
+<button type="button" class="primary-btn" [ngClass]="{'primary-btn': isPrimary, 'secondary-btn': !isPrimary}"
+  (click)="click()">
   {{label}}
 </button>

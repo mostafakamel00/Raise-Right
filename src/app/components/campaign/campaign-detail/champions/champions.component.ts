@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { InputComponent } from "../../../../core/components/input/input.component";
 import { PrimaryButtonComponent } from "../../../../core/components/primary-button/primary-button.component";
-import { CampaignDetail, defaultCampaignDetail } from '../../../../core/model/campaign';
+import { CampaignService } from '../../../../core/services/campaign.service';
 
 @Component({
   selector: 'app-champions',
@@ -11,6 +11,21 @@ import { CampaignDetail, defaultCampaignDetail } from '../../../../core/model/ca
   styleUrl: './champions.component.scss'
 })
 export class ChampionsComponent {
-  @Input() item: CampaignDetail = defaultCampaignDetail
+  campaignService = inject(CampaignService)
+  campaign = this.campaignService.campaignDetail;
+  donor = {
+    name: '',
+    amount: 0
+  };
 
+  onDonate() {
+    if (!this.donor.name.trim() || this.donor.amount <= 0) {
+      console.warn('⚠️ Invalid donation data');
+      return;
+    }
+
+    this.campaignService.addDonor(this.campaign()?.id!, this.donor);
+
+    this.donor = { name: '', amount: 0 };
+  }
 }

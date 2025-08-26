@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ProgressBarComponent } from "../../../core/components/progress-bar/progress-bar.component";
-import { Campaign } from '../../../core/model/campaign';
+import { Campaign, defaultCampaignDetail } from '../../../core/model/campaign';
 import { RouterModule } from '@angular/router';
 import { FallbackImagePipe } from '../../../core/pipe/fallback-image.pipe';
 
@@ -12,11 +12,5 @@ import { FallbackImagePipe } from '../../../core/pipe/fallback-image.pipe';
   styleUrl: './campaign-card.component.scss'
 })
 export class CampaignCardComponent {
-  @Input() item: Campaign = {
-    id: 0,
-    name: '',
-    goal: 0,
-    currentAmount: 0,
-    imageUrl: ''
-  };
+  @Input() item: Campaign = defaultCampaignDetail
 }

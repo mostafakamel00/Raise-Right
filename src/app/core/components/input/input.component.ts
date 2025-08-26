@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -13,4 +13,12 @@ export class InputComponent {
   @Input() placeholder: string = 'Enter your name';
   @Input() value: string | number = '';
   @Input() name: string = '';
+
+  @Output() valueChange = new EventEmitter<string | number>();
+
+  onInputChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    this.value = input.value;
+    this.valueChange.emit(this.value);
+  }
 }

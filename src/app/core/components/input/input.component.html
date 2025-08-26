@@ -1,1 +1,2 @@
-<input [type]="type" [placeholder]="placeholder" [(ngModel)]="value" [name]="name" class="custom-input" />
+<input [type]="type" [placeholder]="placeholder" [(ngModel)]="value" [name]="name" class="custom-input"
+  (input)="onInputChange($event)" />

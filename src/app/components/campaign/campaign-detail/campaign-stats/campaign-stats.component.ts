@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ProgressBarComponent } from "../../../../core/components/progress-bar/progress-bar.component";
-import { CampaignDetail, defaultCampaignDetail } from '../../../../core/model/campaign';
 import { FallbackImagePipe } from '../../../../core/pipe/fallback-image.pipe';
+import { CampaignService } from '../../../../core/services/campaign.service';
 
 @Component({
   selector: 'app-campaign-stats',
@@ -11,5 +11,6 @@ import { FallbackImagePipe } from '../../../../core/pipe/fallback-image.pipe';
   styleUrl: './campaign-stats.component.scss'
 })
 export class CampaignStatsComponent {
-  @Input() item: CampaignDetail = defaultCampaignDetail
+  campaignService = inject(CampaignService)
+  campaign = this.campaignService.campaignDetail;
 }

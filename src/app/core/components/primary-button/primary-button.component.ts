@@ -12,9 +12,9 @@ export class PrimaryButtonComponent {
   @Input() label: string = ''
   @Input() isPrimary: boolean = true
 
-  @Output() handleClick = new EventEmitter<boolean>();
+  @Output() handleClick = new EventEmitter<void>();
 
   click() {
-    this.handleClick.emit(true);
+    this.handleClick.emit();
   }
 }

@@ -1,7 +1,7 @@
 <section>
   <div class="container breadcrumb">
     @for (item of linkMap; track $index) {
-    <a [routerLink]="item.route" class="link semi-bold-md">
+    <a [routerLink]="item.route ? item.route : null" class="link semi-bold-md">
       {{item.name}}
       @if ($index < linkMap.length - 1) { <span class="separator">·</span>}
     </a>
