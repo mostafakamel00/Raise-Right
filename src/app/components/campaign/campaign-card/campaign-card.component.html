@@ -1,0 +1,15 @@
+<div class="campaign-card" [routerLink]="['/campaign', item.id]">
+  <div class="image">
+    <img [src]="item.imageUrl | fallbackImage " [alt]="item.name" class="dummy">
+  </div>
+
+  <div class="progress pt-2 pb-2">
+    <app-progress-bar [value]="item.currentAmount" [max]="item.goal"></app-progress-bar>
+  </div>
+
+  <div class="content">
+    <h3 class="semi-bold-sm">{{item.name}}</h3>
+    <p class="target label">Target: ${{item.goal}}</p>
+    <p class="raised label">Raised: ${{item.currentAmount}}</p>
+  </div>
+</div>

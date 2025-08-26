@@ -1,0 +1,128 @@
+.champions {
+  h3 {
+    color: var(--grey-900);
+    text-align: center;
+  }
+
+  .cards-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px 40px;
+
+    .card {
+      border-radius: 16px;
+      border: 1px solid var(--grey-200);
+      padding: 24px 24px 28px;
+
+      .head {
+        p {
+          color: var(--grey-900);
+        }
+      }
+
+      .currency {
+        color: var(--grey-600);
+
+        span {
+          color: var(--grey-400);
+        }
+      }
+    }
+  }
+
+  .donate {
+    margin-top: 60px;
+
+    h5 {
+      color: var(--grey-900);
+      text-align: center;
+    }
+
+    form {
+      .form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+
+        .input-name {
+          ::ng-deep {
+            input {
+              width: 280px;
+            }
+          }
+        }
+
+        .input-number {
+          ::ng-deep {
+            input {
+              width: 160px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width:991px) {
+  .champions {
+    .cards-list {
+      gap: 25px 15px;
+    }
+  }
+}
+
+@media screen and (max-width:575px) {
+  .champions {
+    padding-top: 20px;
+    padding-bottom: 0px;
+
+    .cards-list {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .donate {
+      form {
+        .form {
+          flex-direction: column;
+          align-items: unset;
+          justify-content: unset;
+
+          .input-name,
+          .input-number {
+            width: 93%;
+
+            ::ng-deep {
+              input {
+                width: 100%;
+              }
+            }
+          }
+
+          ::ng-deep {
+            button {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width:400px) {
+  .champions {
+    .donate {
+      form {
+        .form {
+
+          .input-name,
+          .input-number {
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+}

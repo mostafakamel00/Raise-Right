@@ -1,0 +1,67 @@
+nav {
+  background-color: var(--white);
+  position: relative;
+
+  .logo {
+    max-width: 100%;
+    object-fit: cover;
+    cursor: pointer;
+  }
+
+  ul {
+    display: inline-flex;
+
+    a {
+      color: var(--grey-600);
+      padding-inline-start: 16px;
+    }
+  }
+
+  .navbar__toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+
+  .navbar__mobile {
+    display: none;
+  }
+}
+
+/* 📱 Responsive */
+@media screen and (max-width: 768px) {
+  nav {
+    .navbar__desktop {
+
+      .navbar__links,
+      .actions {
+        display: none;
+      }
+    }
+
+    .navbar__toggle {
+      display: block;
+      margin-left: auto;
+    }
+
+    .navbar__mobile {
+      display: block;
+
+      .navbar__links {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        gap: 7px;
+      }
+    }
+
+
+    .reverse-btn {
+      flex-direction: column;
+      align-items: flex-start !important;
+      gap: 0.5rem;
+    }
+  }
+}

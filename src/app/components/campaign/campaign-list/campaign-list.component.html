@@ -1,0 +1,17 @@
+<section>
+
+  <div class="container">
+    <app-campaign-header [label]="'Make a Positive Impact'"
+      [subLabel]="'Every penny counts, Donate now and make the world a better place.'"
+      [linkMap]="linkMap"></app-campaign-header>
+
+
+    <div class="d-grid-4 pb-96 card-list">
+      @for (item of campaigns(); track item.id) {
+      <app-campaign-card [item]="item"></app-campaign-card>
+      }
+    </div>
+  </div>
+
+  <app-notified-campaigns></app-notified-campaigns>
+</section>

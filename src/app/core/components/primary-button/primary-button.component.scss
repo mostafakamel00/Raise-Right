@@ -1,0 +1,23 @@
+.primary-btn {
+  background-color: var(--brand-600);
+  color: var(--white);
+  border: 1px solid var(--brand-600);
+  box-shadow: 0px 1px 2px 0px rgba(10, 13, 18, 0.05);
+  @extend %extended-btn;
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--grey-600);
+  border: none;
+  @extend %extended-btn;
+}
+
+
+%extended-btn {
+  outline: none;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 16px;
+  cursor: pointer;
+}

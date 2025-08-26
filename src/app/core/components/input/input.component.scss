@@ -1,0 +1,11 @@
+.custom-input {
+  border-radius: 8px;
+  border: 1px solid var(--grey-300);
+  padding: 11px 14px 11px 16px;
+  outline: none;
+
+  &::placeholder {
+    color: var(--grey-500);
+    font-size: 16px;
+  }
+}

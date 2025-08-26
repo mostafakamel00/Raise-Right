@@ -1,0 +1,40 @@
+<nav class="navbar container pt-2">
+  <div class="d-flex-between navbar__desktop">
+
+    <div class="d-flex-between">
+      <img src="./assets/images/Logo.svg" alt="logo" class="logo" loading="lazy" routerLink="/">
+      <!-- Desktop links -->
+      <ng-container *ngTemplateOutlet="navLinks"></ng-container>
+    </div>
+
+    <!-- Desktop actions -->
+    <ng-container *ngTemplateOutlet="navActions"></ng-container>
+
+    <button class="navbar__toggle" (click)="toggleMenu()">
+      &#9776;
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  @if(isOpen) {
+  <div class="navbar__mobile">
+    <ng-container *ngTemplateOutlet="navLinks"></ng-container>
+    <ng-container *ngTemplateOutlet="navActions"></ng-container>
+  </div>
+  }
+</nav>
+
+<!--  Templates -->
+<ng-template #navLinks>
+  <ul class="navbar__links">
+    <li><a class="semi-bold-md" routerLink="/campaigns">Campaigns</a></li>
+    <li><a class="semi-bold-md" routerLink="/about">About</a></li>
+  </ul>
+</ng-template>
+
+<ng-template #navActions>
+  <div class="actions reverse-btn">
+    <app-primary-button [isPrimary]="false" [label]="'Login'"></app-primary-button>
+    <app-primary-button [label]="'Sign up'"></app-primary-button>
+  </div>
+</ng-template>

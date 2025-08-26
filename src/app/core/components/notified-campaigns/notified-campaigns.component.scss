@@ -1,0 +1,41 @@
+.notify {
+  background-color: var(--grey-50);
+  text-align: center;
+
+  h3 {
+    color: var(--grey-900);
+  }
+
+  span {
+    color: var(--grey-600);
+    display: inline-block;
+  }
+
+  form {
+    display: flex;
+    justify-content: center;
+
+    ::ng-deep {
+      input {
+        width: 380px;
+        margin-inline-end: 8px;
+      }
+    }
+
+    p {
+      text-align: start;
+      color: var(--grey-600);
+
+      a {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:575px) {
+  .notify {
+    display: none;
+  }
+}

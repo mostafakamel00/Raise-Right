@@ -1,0 +1,19 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .link {
+    color: var(--grey-400);
+
+    &:last-child {
+      color: var(--brand-600);
+    }
+  }
+
+  .separator {
+    margin: 0 8px;
+    color: var(--grey-300);
+    font-size: 20px;
+  }
+}

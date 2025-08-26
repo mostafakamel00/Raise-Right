@@ -1,0 +1,17 @@
+.campaign-card {
+  cursor: pointer;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    h3 {
+      color: var(--grey-900);
+    }
+
+    p {
+      color: var(--grey-600);
+    }
+  }
+}

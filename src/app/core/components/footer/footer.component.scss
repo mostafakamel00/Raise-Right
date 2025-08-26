@@ -1,0 +1,43 @@
+footer {
+  padding: 64px 0 48px 0;
+
+  .grid-parent {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+
+    h6 {
+      color: var(--grey-500);
+    }
+
+    ul {
+      li {
+        padding-bottom: 8px;
+
+        a {
+          color: var(--grey-600);
+        }
+      }
+    }
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--grey-200);
+  }
+}
+
+@media screen and (max-width: 991px) {
+  footer {
+    .grid-parent {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  footer {
+    .footer-bottom {
+      flex-direction: column;
+    }
+  }
+}
